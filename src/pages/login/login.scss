@@ -1,0 +1,26 @@
+
+@mixin btn-theme {
+   background-color: #9A68C7;
+   border-color: #743EA5;
+   font-size:20px;
+   border-radius: 5px;
+   padding: 10px 22px;
+   &:hover {
+      background-color: #8A58B7;
+
+   }
+   &:active {
+      background-color: #8A58B7;
+   }
+}
+
+.page-login {
+      border: 1px solid grey;
+      border-radius: 5px;
+}
+.page-login-button{
+  display: flex;
+  margin: auto;
+ @include btn-theme;
+ margin-top: 30px;
+}
