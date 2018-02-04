@@ -1,12 +1,18 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>signup</ion-title>
+    <ion-title>Sign Up</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding id="signUp">
+  <ion-label >First Name</ion-label> <ion-input class="page-signup" type="text" [(ngModel)]="firstname" name="firstname"></ion-input>
+  <ion-label >Last Name</ion-label> <ion-input class="page-signup" type="text" [(ngModel)]="lastname" name="lastname"></ion-input>
+ <ion-label >Email</ion-label> <ion-input class="page-signup" type="email" [(ngModel)]="email" name="email"></ion-input>
+ <ion-label>Password</ion-label><ion-input  class="page-signup" type="password"  name="password"></ion-input>
+ <ion-label>Confirm Password</ion-label><ion-input  class="page-signup" type="password"  name="Confirm Password"></ion-input>
+ <button ion-button block class="marginTop">signup</button>
 
 </ion-content>
