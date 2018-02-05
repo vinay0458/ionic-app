@@ -16,6 +16,6 @@
 <ion-content padding id="login">
  <ion-label >Email</ion-label> <ion-input class="page-login" type="email" [(ngModel)]="email" name="email"></ion-input>
  <ion-label>Password</ion-label><ion-input  class="page-login" type="password"  name="password"></ion-input>
- <button ion-button block class="marginTop">LOGIN</button>
+ <button ion-button block class="marginTop" (click)="login()">LOGIN</button>
 
 </ion-content>

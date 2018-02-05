@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
+
 /*
   Generated class for the Rest provider.
 
@@ -14,9 +15,19 @@ import 'rxjs/add/operator/map';
 export class Rest {
 
   private apiUrl = 'https://restcountries.eu/rest/v2/all';
+  private loginUrl = 'http://localhost:3000/login';
+
+
+
 
   constructor(public http: Http) {}
 
+
+  getlogin(): Observable<string[]> {
+    return this.http.get(this.loginUrl)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
   getCountries(): Observable<string[]> {
     return this.http.get(this.apiUrl)
                     .map(this.extractData)
@@ -25,6 +36,7 @@ export class Rest {
 
   private extractData(res: Response) {
     let body = res.json();
+    console.log(body);
     return body || { };
   }
 

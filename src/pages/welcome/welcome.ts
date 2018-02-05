@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { LoginPage }  from '../login/login';
 import { SignupPage }  from '../signup/signup';
+//import { car } from '../../assets/icon/car';
 
 @IonicPage()
 @Component({
@@ -15,6 +16,7 @@ export class WelcomePage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad WelcomePage');
+    //thi.car=car;
   }
   signin(){
    this.navCtrl.push(LoginPage);

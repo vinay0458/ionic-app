@@ -14,5 +14,7 @@ export class SignupPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad SignupPage');
   }
-
+  signup(){
+    
+  }
 }
