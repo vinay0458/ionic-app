@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http, Response,Headers, RequestOptions } from '@angular/http';
+//import {Http, Response, Headers, RequestOptions} from "@angular/http";
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
@@ -15,16 +16,25 @@ import 'rxjs/add/operator/map';
 export class Rest {
 
   private apiUrl = 'https://restcountries.eu/rest/v2/all';
-  private loginUrl = 'http://localhost:3000/login';
+  private loginUrl = 'http://localhost:3000/api/login';
+  private signupUrl = 'http://localhost:3000/api/signup';
 
 
 
 
   constructor(public http: Http) {}
 
-
-  getlogin(): Observable<string[]> {
-    return this.http.get(this.loginUrl)
+  getSignUpStatus(userDetails): Observable<string[]> {
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+   let options = new RequestOptions({ headers: headers });
+   let body = userDetails;
+    return this.http.post(this.signupUrl,body)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+  getloginStatus(userDetails): Observable<string[]> {
+    let body = userDetails;
+    return this.http.post(this.loginUrl,body)
                     .map(this.extractData)
                     .catch(this.handleError);
   }

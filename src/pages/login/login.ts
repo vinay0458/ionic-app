@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Rest } from '../../providers/rest';
-//import {HomePage} from '../home/home';
+import {HomePage} from '../home/home';
 
 /**
  * Generated class for the LoginPage page.
@@ -15,7 +15,10 @@ import { Rest } from '../../providers/rest';
   templateUrl: 'login.html',
 })
 export class LoginPage {
-  userDetails: string[];
+  userDetails={
+    email:'',
+    password:''
+  };
   constructor(public navCtrl: NavController, public navParams: NavParams,public rest: Rest) {
   }
 
@@ -26,12 +29,22 @@ export class LoginPage {
   }
   login(){
   console.log('LoginPage');
-  this.rest.getlogin().subscribe(
-   userdetails => this.userDetails = userdetails
-
+  this.userDetails.email='dsfdgs@gmail.com';
+  this.userDetails.password='123456';
+  this.rest.getloginStatus(this.userDetails).subscribe(
+   response =>this.loginSucess(response),
+   err=> console.log(err)
   );
-  console.log(this.userDetails);
+
   // this.navCtrl.push(HomePage);
  }
+loginSucess(response){
+  if(response.sucess){
+     this.navCtrl.push(HomePage);
+  }else{
+    console.log(response);
+  }
+}
+
 
 }

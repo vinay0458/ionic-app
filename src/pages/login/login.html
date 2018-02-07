@@ -12,10 +12,17 @@
 
 </ion-header>
 
-
 <ion-content padding id="login">
- <ion-label >Email</ion-label> <ion-input class="page-login" type="email" [(ngModel)]="email" name="email"></ion-input>
- <ion-label>Password</ion-label><ion-input  class="page-login" type="password"  name="password"></ion-input>
- <button ion-button block class="marginTop" (click)="login()">LOGIN</button>
+ <ion-list>
+     <ion-item>
+         <ion-input  type="email" value="" placeholder="Email"></ion-input>
+     </ion-item>
+     <ion-item>
 
+         <ion-input  type="password"  value=""  placeholder="password"></ion-input>
+     </ion-item>
+
+     <button ion-button block  (click)="login()" color="energy2">LOGIN</button>
+
+ </ion-list>
 </ion-content>
