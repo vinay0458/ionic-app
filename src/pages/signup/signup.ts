@@ -24,13 +24,13 @@ export class SignupPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad SignupPage');
   }
-  signup(){
+  signup(firstname,lastname,email,password,confirmpassword){
         this.userDetails={
-          firstname:'123456',
-          lastname:'123456',
-          email:'123456',
-          password:'123456',
-          confirmpassword:'123456'
+          firstname:firstname,
+          lastname:lastname,
+          email:email,
+          password:password,
+          confirmpassword:confirmpassword
         };
         this.rest.getSignUpStatus(this.userDetails).subscribe(
          response => this.navigate(response),

@@ -27,10 +27,12 @@ export class LoginPage {
 
 
   }
-  login(){
+  login(email,pwd){
   console.log('LoginPage');
-  this.userDetails.email='dsfdgs@gmail.com';
-  this.userDetails.password='123456';
+  console.log(email);
+  console.log(pwd);
+  this.userDetails.email=email;
+  this.userDetails.password=pwd;
   this.rest.getloginStatus(this.userDetails).subscribe(
    response =>this.loginSucess(response),
    err=> console.log(err)
