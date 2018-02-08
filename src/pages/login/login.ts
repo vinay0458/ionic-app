@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Rest } from '../../providers/rest';
-import {HomePage} from '../home/home';
+import { OfferRidePage } from '../offerride/offerride';
 
 /**
  * Generated class for the LoginPage page.
@@ -42,7 +42,7 @@ export class LoginPage {
  }
 loginSucess(response){
   if(response.sucess){
-     this.navCtrl.push(HomePage);
+     this.navCtrl.push(OfferRidePage);
   }else{
     console.log(response);
   }
