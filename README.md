@@ -11,5 +11,3 @@ To run this source:
 * Run 'ionic serve -l'
 
 If you think this source code is useful, it will be great if you just give it star 
-
-test commit
