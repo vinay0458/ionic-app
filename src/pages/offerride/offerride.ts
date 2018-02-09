@@ -7,6 +7,8 @@ import {} from '@types/googlemaps';
 
 
 
+
+
 @IonicPage()
 @Component({
   selector: 'page-offerride',
@@ -19,10 +21,9 @@ export class OfferRidePage implements OnInit {
   public searchControl: FormControl;
   public zoom: number;
   
-  @ViewChild("search")
-  public searchElementRef: ElementRef;
-  @ViewChild("search1")
-  public searchElementRef1: ElementRef;
+  
+  @ViewChild('searchbar', {read: ElementRef}) searchbar: ElementRef;
+  @ViewChild('searchbar1', {read: ElementRef}) searchbar1: ElementRef;
   
   constructor(
     private mapsAPILoader: MapsAPILoader,
@@ -30,6 +31,7 @@ export class OfferRidePage implements OnInit {
   ) {}
   
   ngOnInit() {
+    console.log("hiii",this.searchbar1.nativeElement);
     //set google maps defaults
     this.zoom = 1;
     this.latitude = 13.082680;
@@ -42,10 +44,10 @@ export class OfferRidePage implements OnInit {
     this.setCurrentPosition();
     //load Places Autocomplete
     this.mapsAPILoader.load().then(() => {
-      let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
+      let autocomplete = new google.maps.places.Autocomplete(this.searchbar1.nativeElement, {
         types: ["geocode"]
       });
-      let autocomplete2 = new google.maps.places.Autocomplete(this.searchElementRef1.nativeElement, {
+      let autocomplete2 = new google.maps.places.Autocomplete(this.searchbar.nativeElement, {
         types: ["geocode"]
       });
       console.log(".....maps");

@@ -1,21 +1,19 @@
+
+
+
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Offer A Ride</ion-title>
+    <ion-title>offerRide</ion-title>
   </ion-navbar>
 
 </ion-header>
 
-
 <ion-content padding id="offerRide">
-  <div class="container">
-      <h1>Enter the below details to offer a Ride</h1>
-      <div class="form-group">
-        <label for="fromAddress">From Address: </label>
-        <input id ="fromAddress" placeholder="From Address" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #search [formControl]="searchControl">
-        <label for="destination">Destination: </label>
-        <input id ="destination" placeholder="Destination Address" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #search1 [formControl]="searchControl">
-      </div>
-      
-    </div>
+    
+    <ion-searchbar id ="fromAddress" placeholder="From Address" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #searchbar [formControl]="searchControl"></ion-searchbar>
+    <ion-searchbar id ="destination" placeholder="Destination Address" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #searchbar1 [formControl]="searchControl"></ion-searchbar>
+
+     <button ion-button block  (click)="offerRide()" color="energy2">Offer a Ride</button>
+
 </ion-content>

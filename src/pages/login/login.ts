@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Rest } from '../../providers/rest';
 import { OfferRidePage } from '../offerride/offerride';
 
+
 /**
  * Generated class for the LoginPage page.
  *
