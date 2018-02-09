@@ -3,6 +3,10 @@ import { IonicPage} from 'ionic-angular';
 import { FormControl } from "@angular/forms";
 import { MapsAPILoader } from '@agm/core';
 import {} from '@types/googlemaps';
+
+
+
+
 @IonicPage()
 @Component({
   selector: 'page-offerride',
@@ -17,6 +21,8 @@ export class OfferRidePage implements OnInit {
   
   @ViewChild("search")
   public searchElementRef: ElementRef;
+  @ViewChild("search1")
+  public searchElementRef1: ElementRef;
   
   constructor(
     private mapsAPILoader: MapsAPILoader,
@@ -39,10 +45,36 @@ export class OfferRidePage implements OnInit {
       let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
         types: ["geocode"]
       });
+      let autocomplete2 = new google.maps.places.Autocomplete(this.searchElementRef1.nativeElement, {
+        types: ["geocode"]
+      });
+      console.log(".....maps");
       autocomplete.addListener("place_changed", () => {
         this.ngZone.run(() => {
+          console.log("place_changed");
           //get the place result
           let place: google.maps.places.PlaceResult = autocomplete.getPlace();
+  
+          //verify result
+          window.alert(place.geometry.location); // gets latitude and longitude here
+          if (place.geometry === undefined || place.geometry === null) {
+            return;
+          }
+          
+          //set latitude, longitude and zoom
+          this.latitude = place.geometry.location.lat();
+          this.longitude = place.geometry.location.lng();
+          this.zoom = 12;
+        });
+      });
+
+
+
+      autocomplete2.addListener("place_changed", () => {
+        this.ngZone.run(() => {
+          console.log("place_changed");
+          //get the place result
+          let place: google.maps.places.PlaceResult = autocomplete2.getPlace();
   
           //verify result
           window.alert(place.geometry.location); // gets latitude and longitude here
@@ -61,6 +93,7 @@ export class OfferRidePage implements OnInit {
   
   private setCurrentPosition() {
     if ("geolocation" in navigator) {
+      console.log("geolocation");
       navigator.geolocation.getCurrentPosition((position) => {
         this.latitude = position.coords.latitude;
         this.longitude = position.coords.longitude;

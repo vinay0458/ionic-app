@@ -14,10 +14,8 @@
         <label for="fromAddress">From Address: </label>
         <input id ="fromAddress" placeholder="From Address" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #search [formControl]="searchControl">
         <label for="destination">Destination: </label>
-        <input id ="destination" placeholder="Destination Address" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #search [formControl]="searchControl">
+        <input id ="destination" placeholder="Destination Address" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #search1 [formControl]="searchControl">
       </div>
-      <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom">
-        <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
-      </agm-map>
+      
     </div>
 </ion-content>
