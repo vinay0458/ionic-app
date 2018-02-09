@@ -11,9 +11,10 @@
 
 <ion-content padding id="offerRide">
     
-    <ion-searchbar id ="fromAddress" placeholder="From Address" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #searchbar [formControl]="searchControl"></ion-searchbar>
-    <ion-searchbar id ="destination" placeholder="Destination Address" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #searchbar1 [formControl]="searchControl"></ion-searchbar>
-
-     <button ion-button block  (click)="offerRide()" color="energy2">Offer a Ride</button>
+    <ion-searchbar id ="fromAddress" placeholder="From Address" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #fromAddress [formControl]="searchControl"></ion-searchbar>
+  
+    <ion-searchbar id ="destinationAddress" placeholder="Destination Address" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="destinationAddress" #destinationAddress [formControl]="searchControl"></ion-searchbar>
+  
+    <button ion-button block  (click)="offerRide()" color="energy2">Offer a Ride</button>
 
 </ion-content>
