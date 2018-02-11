@@ -1,4 +1,4 @@
-import { Component, NgZone, OnInit } from '@angular/core';
+import { Component, NgZone, OnInit,ViewChild } from '@angular/core';
 import { IonicPage} from 'ionic-angular';
 import { FormControl } from "@angular/forms";
 import { MapsAPILoader } from '@agm/core';
@@ -21,19 +21,22 @@ export class OfferRidePage implements OnInit {
   public longitude: number;
   public searchControl: FormControl;
   public zoom: number;
+  date: string;
+  maxDate: string;
 
   
   constructor(
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone
   ) {}
-  
+  @ViewChild('datePicker') datePicker;
   ngOnInit() {
     
     //set google maps defaults
     this.zoom = 1;
     this.latitude = 13.082680;
     this.longitude = 80.270718;
+    
     
     //create search FormControl
     this.searchControl = new FormControl();
@@ -91,4 +94,20 @@ export class OfferRidePage implements OnInit {
       });
     }
   }
+
+
+
+  
+     open() {
+         if (!this.date) {
+             this.date = new Date().toJSON().split('T')[0];
+             setTimeout(() => {
+                 this.datePicker.open();
+             }, 50)
+         } else {
+             this.datePicker.open();
+         }
+
+     }
+
 }

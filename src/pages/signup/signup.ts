@@ -15,7 +15,8 @@ export class SignupPage {
     lastname:'',
     email:'',
     password:'',
-    confirmpassword:''
+    confirmpassword:'',
+    type:'register'
   };
   err:string;
   constructor(public navCtrl: NavController, public navParams: NavParams,public rest: Rest) {
@@ -30,7 +31,8 @@ export class SignupPage {
           lastname:lastname,
           email:email,
           password:password,
-          confirmpassword:confirmpassword
+          confirmpassword:confirmpassword,
+          type:'register'
         };
         this.rest.getSignUpStatus(this.userDetails).subscribe(
          response => this.navigate(response),

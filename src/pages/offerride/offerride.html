@@ -17,4 +17,16 @@
   
     <button ion-button block  (click)="offerRide()" color="energy2">Offer a Ride</button>
 
+    <ion-list>
+      <ion-item>
+        <ion-label color="primary">Select Date</ion-label>
+        <ion-input placeholder="Text Input" [value]="date | date:'dd/MM/yyyy'" (click)="open()"></ion-input>
+      </ion-item>
+      <ion-icon ios="ios-calendar" md="md-calendar"></ion-icon>
+      <ion-item no-lines hidden="true">
+        <ion-datetime #datePicker displayFormat="DD/MM/YYYY" (ionCancel)="this.date  = null" [(ngModel)]="date" doneText="Done" cancelText="Cancel" [max]="maxDate" >
+        </ion-datetime>
+      </ion-item>
+    </ion-list>
+
 </ion-content>
