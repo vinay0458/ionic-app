@@ -2,6 +2,7 @@ import { Component, NgZone, OnInit, ViewChild, ElementRef, OnChanges } from '@an
 import { IonicPage } from 'ionic-angular';
 import { FormControl } from "@angular/forms";
 import { MapsAPILoader } from '@agm/core';
+import { Rest } from '../../providers/rest';
 import { } from '@types/googlemaps';
 
 declare var google;
@@ -24,7 +25,7 @@ export class OfferRidePage {
   to: any;
 
   constructor(private mapsAPILoader: MapsAPILoader,
-    private ngZone: NgZone) {
+    private ngZone: NgZone,public rest: Rest) {
 
 
   }
@@ -152,6 +153,17 @@ export class OfferRidePage {
       }
     });
   }
+  
 
+
+  offerRide(){
+    if(this.from.place && this.to.place){
+      this.rest.offerRide(this).subscribe(
+        response => console.log(response),
+        err=>      console.log(err)
+
+       );
+    }
+  }
 
 }

@@ -30,9 +30,7 @@ export class LoginPage {
 
   }
   login(email,pwd){
-  console.log('LoginPage');
-  console.log(email);
-  console.log(pwd);
+  
   this.userDetails.email=email;
   this.userDetails.password=pwd;
   this.rest.getloginStatus(this.userDetails).subscribe(

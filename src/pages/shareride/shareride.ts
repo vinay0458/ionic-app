@@ -3,6 +3,7 @@ import { IonicPage } from 'ionic-angular';
 import { NavController,NavParams } from 'ionic-angular';
 import { FormControl } from "@angular/forms";
 import { MapsAPILoader } from '@agm/core';
+import { Rest } from '../../providers/rest';
 import {} from '@types/googlemaps';
 
 
@@ -20,7 +21,7 @@ declare var google;
   templateUrl: 'shareride.html',
 })
 export class ShareridePage {
-
+  rideDetails:any;
   map: any;
   Destination: any;
   fromAddress: any;
@@ -33,7 +34,7 @@ export class ShareridePage {
   to: any;
 
   constructor(private mapsAPILoader: MapsAPILoader,
-    private ngZone: NgZone) {
+    private ngZone: NgZone,public rest: Rest) {
 
 
   }
@@ -55,6 +56,7 @@ export class ShareridePage {
     this.address = "";
     this.from = {};
     this.to = {};
+    this.rideDetails={};
 
 
     //create search FormControl
@@ -162,5 +164,17 @@ export class ShareridePage {
     });
   }
 
+  
+  offerRide(){
+    if(this.from.address && this.to.address){
+      this.rideDetails.from=this.from;
+      this.rideDetails.to=this.to;
 
+      this.rest.offerRide(this.rideDetails).subscribe(
+        response => console.log(response),
+        err=>      console.log(err)
+
+       );
+    }
+  }
 }
