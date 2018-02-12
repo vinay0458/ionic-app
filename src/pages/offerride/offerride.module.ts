@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 
 
+
 @NgModule({
   declarations: [OfferRidePage],
   imports: [
@@ -15,6 +16,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
     }),
     FormsModule,
     ReactiveFormsModule
+    
    
   ],
   entryComponents: [OfferRidePage]

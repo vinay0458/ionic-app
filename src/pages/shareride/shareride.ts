@@ -1,17 +1,26 @@
-import { Component, NgZone, OnInit, ViewChild, ElementRef, OnChanges } from '@angular/core';
+import { Component,NgZone, OnInit,ViewChild,ElementRef } from '@angular/core';
 import { IonicPage } from 'ionic-angular';
+import { NavController,NavParams } from 'ionic-angular';
 import { FormControl } from "@angular/forms";
 import { MapsAPILoader } from '@agm/core';
-import { } from '@types/googlemaps';
+import {} from '@types/googlemaps';
+
 
 declare var google;
 
+/**
+ * Generated class for the ShareridePage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
 @IonicPage()
 @Component({
-  selector: 'page-offerride',
-  templateUrl: 'offerride.html',
+  selector: 'page-shareride',
+  templateUrl: 'shareride.html',
 })
-export class OfferRidePage {
+export class ShareridePage {
+
   map: any;
   Destination: any;
   fromAddress: any;
