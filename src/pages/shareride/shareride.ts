@@ -5,6 +5,7 @@ import { FormControl } from "@angular/forms";
 import { MapsAPILoader } from '@agm/core';
 import { Rest } from '../../providers/rest';
 import {} from '@types/googlemaps';
+import { YourridePage } from '../yourride/yourride';
 
 
 declare var google;
@@ -32,9 +33,9 @@ export class ShareridePage {
   public address: any;
   from: any;
   to: any;
-
+ 
   constructor(private mapsAPILoader: MapsAPILoader,
-    private ngZone: NgZone,public rest: Rest) {
+    private ngZone: NgZone,public rest: Rest,public navCtrl: NavController, public navParams: NavParams) {
 
 
   }
@@ -171,10 +172,16 @@ export class ShareridePage {
       this.rideDetails.to=this.to;
 
       this.rest.offerRide(this.rideDetails).subscribe(
-        response => console.log(response),
+        response => this.navigator(response),
         err=>      console.log(err)
 
        );
     }
+  }
+
+  navigator(res){
+
+    if(res.status===200)
+    this.navCtrl.push(YourridePage);
   }
 }
