@@ -10,6 +10,8 @@ import { Rest } from '../../providers/rest';
 })
 export class HomePage {
 
+  rootPage:any = 'TabsPage';
+
   countries: string[];
   errorMessage: string;
 
@@ -18,14 +20,9 @@ export class HomePage {
   }
 
   ionViewDidLoad() {
-    this.getCountries();
+    
   }
 
-  getCountries() {
-    this.rest.getCountries()
-       .subscribe(
-         countries => this.countries = countries,
-         error =>  this.errorMessage = <any>error);
-  }
+  
 
 }

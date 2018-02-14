@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Rest } from '../../providers/rest';
-import { OfferRidePage } from '../offerride/offerride';
+//import { OfferRidePage } from '../offerride/offerride';
+import { HomePage } from '../home/home';
+
 
 /**
  * Generated class for the LoginPage page.
@@ -28,9 +30,7 @@ export class LoginPage {
 
   }
   login(email,pwd){
-  console.log('LoginPage');
-  console.log(email);
-  console.log(pwd);
+  
   this.userDetails.email=email;
   this.userDetails.password=pwd;
   this.rest.getloginStatus(this.userDetails).subscribe(
@@ -42,7 +42,7 @@ export class LoginPage {
  }
 loginSucess(response){
   if(response.sucess){
-     this.navCtrl.push(OfferRidePage);
+     this.navCtrl.push(HomePage);
   }else{
     console.log(response);
   }

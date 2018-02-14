@@ -1,18 +1,28 @@
-import { Component, NgZone, OnInit, ViewChild, ElementRef, OnChanges } from '@angular/core';
+import { Component,NgZone, OnInit,ViewChild,ElementRef } from '@angular/core';
 import { IonicPage } from 'ionic-angular';
+import { NavController,NavParams } from 'ionic-angular';
 import { FormControl } from "@angular/forms";
 import { MapsAPILoader } from '@agm/core';
 import { Rest } from '../../providers/rest';
-import { } from '@types/googlemaps';
+import {} from '@types/googlemaps';
+import { YourridePage } from '../yourride/yourride';
+
 
 declare var google;
 
+/**
+ * Generated class for the ShareridePage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
 @IonicPage()
 @Component({
-  selector: 'page-offerride',
-  templateUrl: 'offerride.html',
+  selector: 'page-shareride',
+  templateUrl: 'shareride.html',
 })
-export class OfferRidePage {
+export class ShareridePage {
+  rideDetails:any;
   map: any;
   Destination: any;
   fromAddress: any;
@@ -23,9 +33,9 @@ export class OfferRidePage {
   public address: any;
   from: any;
   to: any;
-
+ 
   constructor(private mapsAPILoader: MapsAPILoader,
-    private ngZone: NgZone,public rest: Rest) {
+    private ngZone: NgZone,public rest: Rest,public navCtrl: NavController, public navParams: NavParams) {
 
 
   }
@@ -47,6 +57,7 @@ export class OfferRidePage {
     this.address = "";
     this.from = {};
     this.to = {};
+    this.rideDetails={};
 
 
     //create search FormControl
@@ -153,17 +164,24 @@ export class OfferRidePage {
       }
     });
   }
+
   
-
-
   offerRide(){
-    if(this.from.place && this.to.place){
-      this.rest.offerRide(this).subscribe(
-        response => console.log(response),
+    if(this.from.address && this.to.address){
+      this.rideDetails.from=this.from;
+      this.rideDetails.to=this.to;
+
+      this.rest.offerRide(this.rideDetails).subscribe(
+        response => this.navigator(response),
         err=>      console.log(err)
 
        );
     }
   }
 
+  navigator(res){
+
+    if(res.status===200)
+    this.navCtrl.push(YourridePage);
+  }
 }

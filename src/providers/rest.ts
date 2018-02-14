@@ -18,12 +18,21 @@ export class Rest {
   private apiUrl = 'https://restcountries.eu/rest/v2/all';
   private loginUrl = 'http://localhost:3000/api/login';
   private signupUrl = 'http://localhost:3000/api/signup';
+  private offerRideUrl = 'http://localhost:3000/api/offerRide';
 
 
 
 
   constructor(public http: Http) {}
-
+  
+  offerRide(rideDetails): Observable<string[]> {
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+   let options = new RequestOptions({ headers: headers });
+   let body = rideDetails;
+    return this.http.post(this.offerRideUrl,body)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
   getSignUpStatus(userDetails): Observable<string[]> {
     let headers = new Headers({ 'Content-Type': 'application/json' });
    let options = new RequestOptions({ headers: headers });
